@@ -58,6 +58,10 @@
 }
 
 /* EditPost CSS */
+.edit-post {
+  margin-top: 10%;
+}
+
 .edit-post label {
   font-size: 20px;
   margin-bottom: 5px;
@@ -98,4 +102,76 @@
 
 .delete-button:hover {
   background-color: #974842;
+}
+
+/* ReadCards CSS */
+.read-posts-title {
+  width: 100%;
+  text-align: center;
+}
+
+.read-posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.read-posts-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1300px;
+  width: 100%;
+}
+
+/* Post CSS */
+.post {
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(187, 187, 187, 0.497);
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+  margin-bottom: 25px;
+  width: 370px;
+  margin-right: 20px;
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+.post-link{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+.post-link-button {
+  text-decoration: none;
+}
+
+.post-container{
+  align-items: center;
+  padding-bottom:5px;
+}
+
+.post-img{
+  width: 200px;
+}
+
+.post .upvote-button {
+  background-color: #64d180;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.upvote-button:hover {
+  background-color: #4a9c5e;
 }
