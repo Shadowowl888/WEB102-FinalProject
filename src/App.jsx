@@ -7,7 +7,7 @@ import ReadPosts from "./pages/ReadPosts";
 import './App.css'
 
 const App = () => {
-  let routes = useRoutes([
+  let element = useRoutes([
     {
       path: "/",
       element: <Home />
@@ -38,9 +38,8 @@ const App = () => {
         <Link to="/new"><button className="header-button">Create New Post</button></Link>
       </div>
       <div className="content">
-        {routes}
+        {element}
       </div>
-      <h1>hi</h1>
     </div>
   );
 };
