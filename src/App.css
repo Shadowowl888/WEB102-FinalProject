@@ -25,22 +25,22 @@
 }
 
 /* CreatePost CSS */
-label {
+.create-post label {
   font-size: 20px;
   margin-bottom: 5px;
 }
 
 .create-post input[type="text"],
 .create-post textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-input[type="submit"] {
+.create-post input[type="submit"] {
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -55,4 +55,47 @@ input[type="submit"] {
 
 .create-button:hover {
   background-color: #3f7f61;
+}
+
+/* EditPost CSS */
+.edit-post label {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.edit-post input[type="text"],
+.edit-post textarea {
+    width: 500px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.edit-post input[type="submit"] {
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.update-button {
+  margin-right: 10px;
+  background-color: #5fbc91;
+}
+
+.update-button:hover {
+  background-color: #3f7f61;
+}
+
+.delete-button {
+  margin-left: 10px;
+  background-color: #cb615a;
+}
+
+.delete-button:hover {
+  background-color: #974842;
 }
