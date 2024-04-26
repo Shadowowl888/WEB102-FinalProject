@@ -30,7 +30,7 @@ const Post = (props) => {
             }
         };
         getTimeDifference(new Date(props.createdAt));
-    }, [props.createdAt])
+    }, [props.createdAt]);
 
     const upvote = async (event) => {
         setUpvotes(upvotes + 1);
@@ -46,7 +46,7 @@ const Post = (props) => {
         <div className="post">
             <Link to={`/info/${props.id}`} key={props.id} className="post-link">
                 <div className="post-container">
-                    <h3>{props.title}</h3>
+                    <h2>{props.title}</h2>
                     <p>{props.content}</p>
                     <h5>{props.upvotes} upvotes</h5>
                     <img className="post-img" src={props.imageURL} />

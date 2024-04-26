@@ -4,7 +4,7 @@ import { supabase } from "../../client";
 
 const EditPost = () => {
     const {id} = useParams();
-    const [post, setPost] = useState({id: null, title: "", content: "", imageUrl: "", upvotes: 0, secretKey: ""});
+    const [post, setPost] = useState({id: null, title: "", content: "", image_url: "", upvotes: 0, secret_key: ""});
 
     useEffect(() => {
         const grabCurrentInfo = async (event) => {
@@ -28,7 +28,7 @@ const EditPost = () => {
         event.preventDefault();
         await supabase
             .from("Posts")
-            .update({title: post.title, content: post.content, image_url: post.imageUrl, upvotes: post.upvotes, secret_key: post.secretKey})
+            .update({title: post.title, content: post.content, image_url: post.image_url, secret_key: post.secret_key})
             .eq("id", id);
         window.location = "/gallery";
     };
@@ -65,11 +65,11 @@ const EditPost = () => {
                 <br />
 
                 <label>Image URL (Optional)</label> <br />
-                <input type="text" id="image-url" name="imageUrl" value={post.image_url} placeholder="Image URL (Optional)" onChange={handleChange} /> <br />
+                <input type="text" id="image-url" name="image_url" value={post.image_url} placeholder="Image URL (Optional)" onChange={handleChange} /> <br />
                 <br />
 
                 <label>Secret Key (Optional)</label> <br />
-                <input type="text" id="secret-key" name="secretKey" value={post.secret_key} placeholder="Secret Key (Optional)" onChange={handleChange} /> <br />
+                <input type="text" id="secret-key" name="secret_key" value={post.secret_key} placeholder="Secret Key (Optional)" onChange={handleChange} /> <br />
                 <br />
                 
                 <input className="update-button" type="submit" value="Update Post" onClick={updatePost} />

@@ -141,12 +141,29 @@
 
 .post-link{
   text-decoration: none;
-  color: white;
+  color: inherit;
   text-align: center;
 }
 
+.post-link:hover {
+  text-decoration: none; /* Remove underline on hover */
+}
+
 .post-link-button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
   text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-link-button:hover {
+  background-color: #0073e6;
 }
 
 .post-container{
@@ -156,9 +173,10 @@
 
 .post-img{
   width: 200px;
+  height: auto;
 }
 
-.post .upvote-button {
+.upvote-button {
   background-color: #64d180;
   border: none;
   color: white;
@@ -174,4 +192,9 @@
 
 .upvote-button:hover {
   background-color: #4a9c5e;
+}
+
+/* PostInfo CSS */
+.post-info-img {
+  width: 500px;
 }
