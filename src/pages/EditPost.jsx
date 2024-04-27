@@ -7,8 +7,7 @@ const EditPost = () => {
     const [post, setPost] = useState({id: null, title: "", content: "", image_url: "", upvotes: 0, secret_key: ""});
 
     useEffect(() => {
-        const grabCurrentInfo = async (event) => {
-            event.preventDefault();
+        const grabCurrentInfo = async () => {
             const {data, error} = await supabase
                 .from("Posts")
                 .select()
@@ -73,7 +72,7 @@ const EditPost = () => {
                 <br />
                 
                 <input className="update-button" type="submit" value="Update Post" onClick={updatePost} />
-                <input className="delete-button" type="submit" value="Delete Delete" onClick={deletePost} />
+                <input className="delete-button" type="submit" value="Delete Post" onClick={deletePost} />
             </form>
         </div>
     );
