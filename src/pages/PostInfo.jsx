@@ -6,6 +6,8 @@ const PostInfo = () => {
     const {id} = useParams();
     const [post, setPost] = useState([]);
     const [upvotes, setUpvotes] = useState(0);
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState("");
     const [timePosted, setTimePosted] = useState("");
 
     useEffect(() => {
@@ -22,6 +24,12 @@ const PostInfo = () => {
             if (data) {
                 setPost(data);
                 setUpvotes(data.upvotes);
+                const commentsArray = Object.values(data.comments || {}).map((comment, index) => ({
+                    id: index, // Generate an id for each comment (replace with actual comment id if available)
+                    content: comment.comment, // Assuming comments are stored as text
+                    created_time: comment.created_time
+                }));
+                setComments(commentsArray);
                 getTimeDifference(new Date(data.created_at));
             }
         };
@@ -49,7 +57,7 @@ const PostInfo = () => {
                 setTimePosted("Posted just now");
             }
         };
-    }, [id, post.created_at]);
+    }, [id]);
 
     const upvote = async (event) => {
         setUpvotes(upvotes + 1);
@@ -60,10 +68,27 @@ const PostInfo = () => {
             .eq("id", post.id);
         window.location = `/info/${id}`;
     };
-    
-    if (post.length === 0) {
-        return <div>Loading...</div>;
-    }
+
+    const submitComment = async () => {
+        const currentTime = new Date().toISOString();
+        const newCommentObject = {
+            id: comments.length,
+            comment: newComment,
+            created_time: currentTime
+        };
+        const updatedComments = [...comments, newCommentObject];
+        await supabase
+            .from("Posts")
+            .update({comments: updatedComments})
+            .eq("id", post.id);
+        setComments(updatedComments);
+        setNewComment("");
+        window.location = `/info/${id}`;
+    };
+
+    const handleCommentChange = (event) => {
+        setNewComment(event.target.value);
+    };
 
     return (
         <div className="post-info">
@@ -72,8 +97,34 @@ const PostInfo = () => {
             <h5>{post.upvotes} upvotes</h5>
             <img className="post-info-img" src={post.image_url} />
             <p>{timePosted}</p>
-            <Link to={`/edit/${post.id}`}><button className="post-link-button">Edit Post</button></Link>
-            <button className="upvote-button" type="submit" onClick={upvote}>Upvote 👍</button>
+            <div className="buttons-section">
+                <Link to={`/edit/${post.id}`}><button className="post-link-button">Edit Post</button></Link>
+                <button className="upvote-button" type="submit" onClick={upvote}>Upvote 👍</button>
+            </div>
+
+            {/* Display existing comments */}
+            <div className="comments-section">
+                <h3>Comments</h3>
+                <div className="comments-list">
+                    {comments.map((comment) => (
+                        <div key={comment.id}>
+                            <p>{comment.content}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            
+            {/* Add a new comment */}
+            <div className="add-comment-section">
+                <textarea
+                    value={newComment}
+                    onChange={handleCommentChange}
+                    placeholder="Leave a comment..."
+                    rows={4}
+                    className="comment-textarea"
+                />
+                <button onClick={submitComment} className="submit-comment-button">Submit Comment</button>
+            </div>
         </div>
     );
 };
