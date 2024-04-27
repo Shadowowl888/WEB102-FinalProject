@@ -55,6 +55,33 @@
   margin-right: 10px;
 }
 
+/* Home CSS */
+.home-container {
+  text-align: center;
+}
+
+.home-img {
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.explore-btn {
+  display: block;
+  background-color: #41aa73;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+.explore-btn:hover {
+  background-color: #379363;
+}
+
 /* CreatePost CSS */
 .create-post label {
   font-size: 20px;
